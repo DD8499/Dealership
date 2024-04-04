@@ -17,12 +17,11 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import { account } from 'src/_mock/account';
 
-import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
+import { Tooltip } from '@mui/material';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import { Tooltip } from '@mui/material';
 
 // ----------------------------------------------------------------------
 

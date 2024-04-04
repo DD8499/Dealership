@@ -57,3 +57,9 @@ export default function RevenueReport({ title, subheader, chart, ...other }) {
     </Card>
   );
 }
+
+RevenueReport.propTypes = {
+  chart: PropTypes.object,
+  subheader: PropTypes.string,
+  title: PropTypes.string,
+};
