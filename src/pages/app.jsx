@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 
 import { AppView } from 'src/sections/overview/view';
