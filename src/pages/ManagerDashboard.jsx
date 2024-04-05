@@ -10,6 +10,7 @@ import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
+import SummaryCard from 'src/components/cards/SummaryCard';
 
 import { users } from 'src/_mock/user';
 
@@ -25,7 +26,6 @@ import AppCurrentVisits from 'src/sections/overview/app-current-visits';
 import AppWidgetSummary from 'src/sections/overview/app-widget-summary';
 import RevenueReport from 'src/sections/charts/RevenueReport';
 import UserPage from './user';
-import SummaryCard from 'src/components/cards/SummaryCard';
 
 // ----------------------------------------------------------------------
 
