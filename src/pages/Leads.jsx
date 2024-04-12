@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import PropTypes from 'prop-types';
 
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -16,23 +17,7 @@ import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
 import { Link } from 'react-router-dom';
 
-const Leads = () => {
-  const ListView = ({ items }) => {
-    return (
-      <List
-        disablePadding
-        subheader={
-          <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-            New
-          </ListSubheader>
-        }
-      >
-        {[1, 2, 3].map((notification) => (
-          <Typography>Text</Typography>
-        ))}
-      </List>
-    );
-  };
+export const Leads = ({ item }) => {
   function handleClick(event) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
@@ -78,12 +63,11 @@ const Leads = () => {
         </Grid>
       </Grid>
       <Grid xs={12} md={12} lg={12} container spacing={4}>
-        {[1, 2, 3, 6, 7].map(() => {
-          return <LeadCard />;
-        })}
+        {[1, 2, 3, 6, 7].map(() => (
+          <LeadCard />
+        ))}
       </Grid>
     </Container>
   );
 };
-
 export default Leads;

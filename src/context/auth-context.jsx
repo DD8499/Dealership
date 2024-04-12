@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
 import { LoaderContext } from './loader-context';
@@ -11,32 +12,28 @@ export const AuthProvider = ({ children }) => {
   const { setLoading } = useContext(LoaderContext);
   //   const [cookies] = useCookies();
 
-  const loginUser = async (values) => {
+  const loginUser = useCallback(() => {
     try {
       setLoading(true);
-      //   let { data } = await api.auth.userLogin(values);
-      //   if (data && data.success) {
-      //     setUserCookies(data.data);
-      //     setUser(data.data);
-      //     toast.success("LoggedIn Successfully!");
-      //     setLoggedIn(true);
-      //     setLoading(false);
-      //   } else {
-      //     setLoading(false);
-      //     setLoggedIn(false);
-      //   }
     } catch (error) {
       setLoading(false);
       setLoggedIn(false);
       toast.error('something went to wrong!');
     }
-  };
+  }, [setLoading, setLoggedIn]);
 
-  const contextValues = {
-    isLoggedIn,
-    loginUser,
-    setLoggedIn,
-  };
+  const contextValues = useMemo(
+    () => ({
+      isLoggedIn,
+      loginUser,
+      setLoggedIn,
+    }),
+    [isLoggedIn, loginUser, setLoggedIn]
+  );
 
   return <AuthContext.Provider value={contextValues}>{children}</AuthContext.Provider>;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.any,
 };

@@ -12,15 +12,13 @@ const logout = async () => {
 
 export const _setTokenForAPI = async (token) => {
   if (token) {
-    api.defaults.headers.common['Authorization'] = token;
-    return;
+    api.defaults.headers.common.Authorization = token;
   }
   const data = await localStorage.getItem('jwtToken');
   if (data) {
     const _token = data;
     console.log('_token', _token);
-    api.defaults.headers.common['Authorization'] = _token;
-    return;
+    api.defaults.headers.common.Authorization = _token;
   }
 };
 _setTokenForAPI();
@@ -47,27 +45,7 @@ api.interceptors.response.use(undefined, (error) => {
       //     },
       //   });
     } else {
-      if (
-        error?.response?.data?.kycStatus === false ||
-        error?.response?.data?.kycStatus !== undefined
-      ) {
-      } else {
-        // Popup.show({
-        //   ...modalErrorConfig,
-        //   title: "Error",
-        //   textBody:
-        //     error?.response?.data?.error ||
-        //     error?.response?.data?.msg ||
-        //     error?.response?.data?.message?.message ||
-        //     error?.response?.data?.message ||
-        //     error?.toJSON()?.message ||
-        //     "Something went wrong",
-        //   buttonText: "Ok",
-        //   callback: () => {
-        //     Popup.hide();
-        //   },
-        // });
-      }
+      console.log('error', error);
     }
   }
 

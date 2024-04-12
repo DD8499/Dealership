@@ -20,10 +20,10 @@ import { account } from 'src/_mock/account';
 import Scrollbar from 'src/components/scrollbar';
 import { Tooltip } from '@mui/material';
 
+import Collapse from '@mui/material/Collapse';
+import Iconify from 'src/components/iconify';
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import Iconify from 'src/components/iconify';
-import Collapse from '@mui/material/Collapse';
 
 // ----------------------------------------------------------------------
 
@@ -167,11 +167,10 @@ Nav.propTypes = {
 // ----------------------------------------------------------------------
 
 function NavItem({ item, index }) {
-  console.log('item', item?.path);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   // const [active, setActive] = useState(item.path === pathname);
-  const handleSubMenuClick = (index) => {
-    setOpenSubMenu(openSubMenu === index ? null : index);
+  const handleSubMenuClick = (indexx) => {
+    setOpenSubMenu(openSubMenu === indexx ? null : indexx);
   };
   const pathname = usePathname();
 
@@ -295,4 +294,5 @@ function NavItem({ item, index }) {
 
 NavItem.propTypes = {
   item: PropTypes.object,
+  index: PropTypes.any,
 };

@@ -4,9 +4,9 @@ import DashboardLayout from 'src/layouts/dashboard';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const ManagerDashboard = lazy(() => import('src/pages/ManagerDashboard'));
-export const Leads = lazy(() => import('src/pages/Leads'));
 export const AccountView = lazy(() => import('src/pages/AccountView'));
 export const AccountDetails = lazy(() => import('src/pages/AccountDetails'));
+export const Leads = lazy(() => import('src/pages/Leads'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const LoginPage = lazy(() => import('src/pages/login'));

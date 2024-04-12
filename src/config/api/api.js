@@ -1,4 +1,4 @@
-import api from './apiCOnfig';
+import api from './apiConfig';
 
 const auth = {
   userLogin: (data) => api.post(`/user/login`, data),
