@@ -26,7 +26,10 @@ import AppCurrentVisits from 'src/sections/overview/app-current-visits';
 import AppWidgetSummary from 'src/sections/overview/app-widget-summary';
 import RevenueReport from 'src/sections/charts/RevenueReport';
 import UserPage from './user';
-
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
 // ----------------------------------------------------------------------
 
 export default function ManagerDashboard() {
@@ -98,7 +101,28 @@ export default function ManagerDashboard() {
   });
 
   const notFound = !dataFiltered.length && !!filterName;
-
+  const campaigns = [
+    {
+      title: 'CHANNEL',
+      value: 'ROM',
+    },
+    {
+      title: 'Email',
+      value: '40%',
+    },
+    {
+      title: 'Website',
+      value: '28%',
+    },
+    {
+      title: 'Facebook',
+      value: '34%',
+    },
+    {
+      title: 'Offline',
+      value: '17%',
+    },
+  ];
   return (
     <Container maxWidth="xl">
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
@@ -192,7 +216,70 @@ export default function ManagerDashboard() {
         </Grid>
         <Grid xs={12} md={6} lg={4} direction="space-between">
           <Grid xs={12} md={6} lg={4} container direction="column" mb={5}>
-            <AppCurrentVisits
+            <Card style={{ padding: 10 }}>
+              <Grid display="flex" justifyContent="space-between">
+                <Typography variant="h3">Campaigns</Typography>
+                <Grid
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  // style={{ border: 'solid', borderColor: '#EfEfEf' }}
+                >
+                  <Iconify
+                    width={30}
+                    icon="ph:dots-three-bold"
+                    sx={{
+                      // color: (theme) => theme.palette.getContrastText(color),
+                      transition: (theme) =>
+                        theme.transitions.create('all', {
+                          duration: theme.transitions.duration.shortest,
+                        }),
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Divider style={{ marginBottom: 20 }} />
+
+              {campaigns?.map((item, index) => {
+                return (
+                  <>
+                    <Grid display="flex" justifyContent="space-between" key={index}>
+                      <Typography>{item?.title}</Typography>
+                      <Typography>{item?.value}</Typography>
+                    </Grid>
+                    <Divider />
+                  </>
+                );
+              })}
+              {/* <List
+                sx={{
+                  py: 0,
+                  // width: '100%',
+                  maxWidth: 360,
+                  borderRadius: 2,
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  backgroundColor: 'background.paper',
+                }}
+              >
+                <ListItem>
+                  <ListItemText primary="Full width variant below" />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem>
+                  <ListItemText primary="Inset variant below" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem>
+                  <ListItemText primary="Middle variant below" />
+                </ListItem>
+                <Divider variant="middle" component="li" />
+                <ListItem>
+                  <ListItemText primary="List item" />
+                </ListItem>
+              </List> */}
+            </Card>
+            {/* <AppCurrentVisits
               title="Over View"
               chart={{
                 series: [
@@ -202,7 +289,7 @@ export default function ManagerDashboard() {
                   { label: 'Africa', value: 4443 },
                 ],
               }}
-            />
+            /> */}
           </Grid>
           <Grid xs={12} md={6} lg={4} container direction="column">
             <AppCurrentVisits

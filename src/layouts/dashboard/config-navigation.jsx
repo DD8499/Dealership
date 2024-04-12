@@ -24,8 +24,20 @@ const navConfig = [
   },
   {
     title: 'Accounts',
-    path: '/accounts',
+    // path: '/accounts',
     icon: icon('account'),
+    children: [
+      {
+        title: 'Account View',
+        path: '/accounts/view',
+        icon: icon('account_view'),
+      },
+      {
+        title: 'Account Details',
+        path: '/accounts/details',
+        icon: icon('account_details'),
+      },
+    ],
   },
   {
     title: 'Activities',
@@ -35,7 +47,7 @@ const navConfig = [
   {
     title: 'Considerations',
     path: '/considerations',
-    icon: icon('consideration'),
+    icon: icon('consider'),
   },
   {
     title: 'Inventory Management',

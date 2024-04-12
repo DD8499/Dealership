@@ -1,18 +1,13 @@
 import PropTypes from 'prop-types';
-
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
 
-import { fShortenNumber } from 'src/utils/format-number';
 import Iconify from '../iconify';
 
 // ----------------------------------------------------------------------
 
 export default function SummaryCard({ title, value, icon, bgColor, sx, ...other }) {
-  console.log('bgColor', bgColor);
   return (
     <Card
       component={Stack}
