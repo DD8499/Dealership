@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -20,6 +20,8 @@ import { account } from 'src/_mock/account';
 import Scrollbar from 'src/components/scrollbar';
 import { Tooltip } from '@mui/material';
 
+import Collapse from '@mui/material/Collapse';
+import Iconify from 'src/components/iconify';
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 
@@ -64,8 +66,8 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const renderMenu = (
     <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
-      {navConfig.map((item) => (
-        <NavItem key={item.title} item={item} />
+      {navConfig.map((item, index) => (
+        <NavItem key={item.title} item={item} index={index} />
       ))}
     </Stack>
   );
@@ -164,43 +166,133 @@ Nav.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function NavItem({ item }) {
+function NavItem({ item, index }) {
+  const [openSubMenu, setOpenSubMenu] = useState(null);
+  // const [active, setActive] = useState(item.path === pathname);
+  const handleSubMenuClick = (indexx) => {
+    setOpenSubMenu(openSubMenu === indexx ? null : indexx);
+  };
   const pathname = usePathname();
 
   const active = item.path === pathname;
 
   return (
     <Tooltip title={item.toolTip ? item.toolTip : ''}>
-      <ListItemButton
-        component={RouterLink}
-        href={item.path}
-        sx={{
-          minHeight: 44,
-          borderRadius: 0.75,
-          typography: 'body2',
-          color: 'text.secondary',
-          textTransform: 'capitalize',
-          fontWeight: 'fontWeightMedium',
-          ...(active && {
-            color: 'primary.main',
-            fontWeight: 'fontWeightSemiBold',
-            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
-            '&:hover': {
-              bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
-            },
-          }),
-        }}
-      >
-        <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
-          {item.icon}
-        </Box>
+      {item?.children ? (
+        <>
+          <ListItemButton
+            component={RouterLink}
+            onClick={() => handleSubMenuClick(index)}
+            href={item.path}
+            sx={{
+              minHeight: 44,
+              borderRadius: 0.75,
+              typography: 'body2',
+              color: 'text.secondary',
+              textTransform: 'capitalize',
+              fontWeight: 'fontWeightMedium',
+              ...(active && {
+                color: 'primary.main',
+                fontWeight: 'fontWeightSemiBold',
+                bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+                '&:hover': {
+                  bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+                },
+              }),
+            }}
+          >
+            <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
+              {item.icon}
+            </Box>
 
-        <Box component="span">{item.title} </Box>
-      </ListItemButton>
+            <Box component="span">{item.title} </Box>
+            {openSubMenu === index ? (
+              <Iconify
+                icon="iconamoon:arrow-down-2-light"
+                sx={{
+                  color: '#247EF2',
+                }}
+              />
+            ) : (
+              <Iconify
+                icon="iconamoon:arrow-up-2-light"
+                sx={{
+                  color: '#247EF2',
+                }}
+              />
+            )}
+          </ListItemButton>
+          <Collapse in={openSubMenu === index} timeout="auto" unmountOnExit>
+            {item?.children?.map((subNavItem, subIndex) => {
+              const activee = subNavItem.path === pathname;
+              console.log('subNavItem.path === pathname', subNavItem.path === pathname);
+              console.log('activee', activee);
+              console.log('pathname', pathname, subNavItem.path);
+
+              return (
+                <ListItemButton
+                  component={RouterLink}
+                  href={subNavItem.path}
+                  sx={{
+                    minHeight: 44,
+                    borderRadius: 0.75,
+                    typography: 'body2',
+                    color: 'text.secondary',
+                    textTransform: 'capitalize',
+                    fontWeight: 'fontWeightMedium',
+                    ...(activee && {
+                      color: 'primary.main',
+                      fontWeight: 'fontWeightSemiBold',
+                      bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+                      '&:hover': {
+                        bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+                      },
+                    }),
+                  }}
+                >
+                  <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
+                    {subNavItem.icon}
+                  </Box>
+                  <Box component="span">{subNavItem.title} </Box>
+                </ListItemButton>
+              );
+            })}
+          </Collapse>
+        </>
+      ) : (
+        <ListItemButton
+          component={RouterLink}
+          href={item.path}
+          sx={{
+            minHeight: 44,
+            borderRadius: 0.75,
+            typography: 'body2',
+            color: 'text.secondary',
+            textTransform: 'capitalize',
+            fontWeight: 'fontWeightMedium',
+            ...(active && {
+              color: 'primary.main',
+              fontWeight: 'fontWeightSemiBold',
+              bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+              '&:hover': {
+                bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+              },
+            }),
+          }}
+        >
+          <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
+            {item.icon}
+          </Box>
+
+          <Box component="span">{item.title} </Box>
+          {/* {openSubMenu === index ? <ExpandLess /> : <ExpandMore />} */}
+        </ListItemButton>
+      )}
     </Tooltip>
   );
 }
 
 NavItem.propTypes = {
   item: PropTypes.object,
+  index: PropTypes.any,
 };

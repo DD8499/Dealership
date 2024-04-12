@@ -1,10 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
-
 import DashboardLayout from 'src/layouts/dashboard';
-import ManagerDashboard from 'src/pages/ManagerDashboard';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
+export const ManagerDashboard = lazy(() => import('src/pages/ManagerDashboard'));
+export const AccountView = lazy(() => import('src/pages/AccountView'));
+export const AccountDetails = lazy(() => import('src/pages/AccountDetails'));
+export const Leads = lazy(() => import('src/pages/Leads'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const LoginPage = lazy(() => import('src/pages/login'));
@@ -26,8 +28,9 @@ export default function Router() {
       children: [
         { element: <IndexPage />, index: true },
         { path: 'manager-dashboard', element: <ManagerDashboard /> },
-        { path: 'leads', element: <ProductsPage /> },
-        { path: 'accounts', element: <BlogPage /> },
+        { path: 'leads', element: <Leads /> },
+        { path: 'accounts/view', element: <AccountView /> },
+        { path: 'accounts/details', element: <AccountDetails /> },
       ],
     },
     {
