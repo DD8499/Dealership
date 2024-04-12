@@ -17,12 +17,6 @@ const ProvidersWrapper = ({ children }) => {
         ),
         children
       )}
-      {ProviderComponents.reduceRight(
-        (acc, Comp) => (
-          <Comp>{acc}</Comp>
-        ),
-        children
-      )}
     </>
   );
 };

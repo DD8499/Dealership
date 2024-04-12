@@ -13,8 +13,6 @@ export default function AppPage() {
   }, []);
   const { isLoggedIn } = useAuth();
   const { loading } = useLoader();
-  console.log('loading', loading);
-  console.log('isLoggedIn', isLoggedIn);
 
   return (
     <>

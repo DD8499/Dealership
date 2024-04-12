@@ -1,21 +1,12 @@
-import React from 'react';
 import Grid from '@mui/material/Grid';
-import PropTypes from 'prop-types';
 
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import Iconify from 'src/components/iconify/iconify';
 
 import LeadCard from 'src/components/cards/LeadCard';
-import List from '@mui/material/List';
-import ListSubheader from '@mui/material/ListSubheader';
-import { Link } from 'react-router-dom';
 
 export const Leads = ({ item }) => {
   function handleClick(event) {
