@@ -160,7 +160,7 @@ export default function ManagerDashboard() {
           </Grid>
           <Grid xs={12} md={6} lg={12}>
             <RevenueReport
-              title="Revenue Report"
+              title="Deal Distribution By Stage"
               chart={{
                 labels: [
                   '01/01/2023',
@@ -182,18 +182,18 @@ export default function ManagerDashboard() {
                     fill: 'solid',
                     data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
                   },
-                  {
-                    name: 'Revenue',
-                    type: 'column',
-                    fill: 'solid',
-                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43, 100],
-                  },
-                  {
-                    name: 'Free Cash Flow',
-                    type: 'column',
-                    fill: 'gradient',
-                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                  },
+                  // {
+                  //   name: 'Revenue',
+                  //   type: 'column',
+                  //   fill: 'solid',
+                  //   data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43, 100],
+                  // },
+                  // {
+                  //   name: 'Free Cash Flow',
+                  //   type: 'column',
+                  //   fill: 'gradient',
+                  //   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                  // },
                 ],
               }}
             />
@@ -277,7 +277,7 @@ export default function ManagerDashboard() {
           </Grid>
           <Grid xs={12} md={6} lg={4} container direction="column">
             <AppCurrentVisits
-              title="Over View"
+              title="Trends Calculation"
               chart={{
                 series: [
                   { label: 'America', value: 4344 },

@@ -7,9 +7,9 @@ import { LoginView } from 'src/sections/login';
 export default function LoginPage() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title> Login | Minimal UI </title>
-      </Helmet>
+      </Helmet> */}
 
       <LoginView />
     </>

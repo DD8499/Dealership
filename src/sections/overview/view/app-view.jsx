@@ -7,6 +7,7 @@ import RevenueReport from 'src/sections/charts/RevenueReport';
 import UserPage from 'src/pages/user';
 import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentVisits from '../app-current-visits';
+import OverViewChart from 'src/sections/charts/OverViewChart';
 
 // ----------------------------------------------------------------------
 
@@ -92,14 +93,14 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>
-          <AppCurrentVisits
+          <OverViewChart
             title="Over View"
             chart={{
               series: [
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
+                { label: 'America', value: 32 },
+                { label: 'Asia', value: 54 },
+                { label: 'Europe', value: 79 },
+                { label: 'Africa', value: 10 },
               ],
             }}
           />

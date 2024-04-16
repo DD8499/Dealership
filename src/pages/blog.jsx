@@ -7,9 +7,9 @@ import { BlogView } from 'src/sections/blog/view';
 export default function BlogPage() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title> Blog | Minimal UI </title>
-      </Helmet>
+      </Helmet> */}
 
       <BlogView />
     </>

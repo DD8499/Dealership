@@ -37,6 +37,7 @@ export default function RevenueReport({ title, subheader, chart, ...other }) {
         },
       },
     },
+
     ...options,
   });
 
