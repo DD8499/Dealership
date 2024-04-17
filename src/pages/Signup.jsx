@@ -19,23 +19,38 @@ import { bgGradient } from 'src/theme/css';
 
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
+import { MenuItem, Select } from '@mui/material';
+import { toast } from 'react-toastify';
 
 // ----------------------------------------------------------------------
 
-export default function LoginView() {
+export default function SignUp() {
   const theme = useTheme();
 
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
-
+  const [role, setRole] = useState('salesPerson');
+  const options = [
+    { value: 'salesPerson', label: 'Sales Person' },
+    { value: 'manager', label: 'Manager' },
+    { value: 'dealer', label: 'Dealer' },
+  ];
   const handleClick = () => {
-    router.push('/');
+    toast.success(
+      `${options?.filter((x) => x?.value === role)[0]?.label} Register successfully !!`
+    );
+
+    router.push('/login');
+  };
+
+  const handleChange = (event) => {
+    setRole(event.target.value);
   };
 
   const renderForm = (
     <>
-      <Stack spacing={3}>
+      <Stack spacing={3} my={3}>
         <TextField name="email" label="Email address" />
 
         <TextField
@@ -52,19 +67,26 @@ export default function LoginView() {
             ),
           }}
         />
+        <Select
+          labelId="demo-select-small-label"
+          id="demo-select-small"
+          value={role}
+          //   label="Role"
+          onChange={handleChange}
+        >
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
       </Stack>
 
-      <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="flex-end"
-        sx={{ my: 3, cursor: 'pointer' }}
-        onClick={() => console.log('jj')}
-      >
+      {/* <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
         <Link variant="subtitle2" underline="hover">
           Forgot password?
         </Link>
-      </Stack>
+      </Stack> */}
 
       <LoadingButton
         fullWidth
@@ -74,7 +96,7 @@ export default function LoginView() {
         color="inherit"
         onClick={handleClick}
       >
-        Login
+        Sign Up
       </LoadingButton>
     </>
   );
@@ -106,16 +128,12 @@ export default function LoginView() {
             maxWidth: 420,
           }}
         >
-          <Typography variant="h4">Sign in to One Nexus</Typography>
+          <Typography variant="h4">Sign Up to One Nexus</Typography>
 
-          <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
-            Don’t have an account?
-            <Link
-              variant="subtitle2"
-              sx={{ ml: 0.5, cursor: 'pointer' }}
-              onClick={() => router.push('/signup')}
-            >
-              Get started
+          <Typography variant="body2" sx={{ mt: 2, mb: 5, cursor: 'pointer' }}>
+            Already have an account?
+            <Link variant="subtitle2" sx={{ ml: 0.5 }} onClick={() => router.push('/login')}>
+              Login
             </Link>
           </Typography>
 

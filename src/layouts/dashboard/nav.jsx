@@ -204,23 +204,30 @@ function NavItem({ item, index }) {
             <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
               {item.icon}
             </Box>
-
-            <Box component="span">{item.title} </Box>
-            {openSubMenu === index ? (
-              <Iconify
-                icon="iconamoon:arrow-down-2-light"
-                sx={{
-                  color: '#247EF2',
-                }}
-              />
-            ) : (
-              <Iconify
-                icon="iconamoon:arrow-up-2-light"
-                sx={{
-                  color: '#247EF2',
-                }}
-              />
-            )}
+            <Box
+              component="span"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              {item.title}
+              {openSubMenu === index ? (
+                <Iconify
+                  icon="iconamoon:arrow-down-2-light"
+                  sx={{
+                    color: '#247EF2',
+                  }}
+                />
+              ) : (
+                <Iconify
+                  icon="iconamoon:arrow-up-2-light"
+                  sx={{
+                    color: '#247EF2',
+                  }}
+                />
+              )}
+            </Box>
           </ListItemButton>
           <Collapse in={openSubMenu === index} timeout="auto" unmountOnExit>
             {item?.children?.map((subNavItem, subIndex) => {
