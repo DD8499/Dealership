@@ -44,27 +44,23 @@ const navConfig = [
     path: '/activities',
     icon: icon('activity'),
   },
+
   {
-    title: 'Considerations',
-    path: '/considerations',
-    icon: icon('consider'),
-  },
-  {
-    title: 'Inventory Management',
+    title: 'DMS Integration',
     path: '/inventory',
     icon: icon('inventory'),
   },
   {
-    title: 'ICQ',
+    title: 'Cashflow Management',
     path: '/icq',
     icon: icon('accounting'),
-    toolTip: 'Integrated Accounting With Quickbooks',
+    // toolTip: 'Integrated Accounting With Quickbooks',
   },
   {
-    title: 'POS & RM',
+    title: 'Order Management',
     path: '/pos',
     icon: icon('pos'),
-    toolTip: 'POS & Retails Management',
+    // toolTip: 'POS & Retails Management',
   },
   {
     title: 'RTA',
@@ -72,17 +68,24 @@ const navConfig = [
     icon: icon('reporting'),
     toolTip: 'Reporting Tool And Analytics',
   },
-  {
-    title: 'SSPT',
-    path: '/sspt',
-    icon: icon('ic_cart'),
-    toolTip: 'Service Scheduling And Productivity Tracker',
-  },
+
   {
     title: 'ROBE',
     path: '/robe',
     icon: icon('ic_lock'),
     toolTip: 'Repair Order And Billing Estimates',
+  },
+  {
+    title: 'DSFC',
+    path: '/sspt',
+    icon: icon('ic_cart'),
+    toolTip: 'Deal structuring, forms & contracting',
+  },
+  {
+    title: 'LMQ',
+    path: '/considerations',
+    icon: icon('consider'),
+    toolTip: 'Lead Management quoting',
   },
   // {
   //   title: 'login',
